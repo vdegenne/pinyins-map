@@ -12,7 +12,7 @@ const accentsStringRegExp = /[àáǎāèéěēìíǐīòóǒōùúǔūǜ]/;
 export function barePinyin (pinyin: string) {
   if (accentsStringRegExp.test(pinyin)) {
     for (const [letter, accents] of Object.entries(accentsMap)) {
-      pinyin = pinyin.replaceAll(accents, letter);
+      pinyin = pinyin.replace(accents, letter);
     }
   }
   return pinyin;
