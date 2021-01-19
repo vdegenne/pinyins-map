@@ -2,6 +2,7 @@
   "devDependencies": {
     "@material/mwc-checkbox": "^0.20.0",
     "@material/mwc-formfield": "^0.20.0",
+    "@material/mwc-snackbar": "^0.20.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "lit-element": "^2.4.0",
     "rollup": "^2.37.0",

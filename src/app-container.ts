@@ -1,8 +1,10 @@
-import { css, customElement, html, LitElement, property } from "lit-element";
+import { css, customElement, html, LitElement, property, query } from "lit-element";
 import _data from '../data.json';
 import { barePinyin } from "./util";
 import '@material/mwc-formfield';
 import '@material/mwc-checkbox';
+import '@material/mwc-snackbar'
+import { Snackbar } from "@material/mwc-snackbar";
 
 type Character = typeof _data[0] & {
   b: string|string[]; // bare pinyin
@@ -18,6 +20,8 @@ export class AppContainer extends LitElement {
 
   @property({type: Boolean})
   simplified = false;
+
+  @query('mwc-snackbar') snackbar!: Snackbar;
 
   constructor() {
     super();
@@ -68,7 +72,9 @@ export class AppContainer extends LitElement {
         <div class="pinyins">
         ${characters.map(c => {
           return html`
-          <span title="${c.p}">${this.simplified ? (c.s || c.t) : c.t}</span>
+          <span title="${c.p}"
+            @click="${() => this.snackbar.labelText=`${c.t} ⇨ ${c.p}`}"
+          >${this.simplified ? (c.s || c.t) : c.t}</span>
           `
         })}
         </div>
@@ -76,6 +82,10 @@ export class AppContainer extends LitElement {
       `
     })}
     </div>
+
+    <mwc-snackbar
+      timeoutMs="-1"
+      labelText="click on a character" open></mwc-snackbar>
     `
   }
 
