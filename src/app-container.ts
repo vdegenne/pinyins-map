@@ -61,10 +61,11 @@ export class AppContainer extends LitElement {
       </mwc-formfield>
     </div>
 
-    <div
-      style="padding:12px;color:grey">${Object.keys(this.barePinyinsMap).length} bare pinyins</div>
-
     <div id="pinyins-table">
+
+      <div style="padding:12px;color:grey">
+      ${Object.keys(this.barePinyinsMap).length} bare pinyins. Zoom in the page using CTRL + mouse scrolling.</div>
+
     ${Object.entries(this.barePinyinsMap).map(([pinyin, characters]) => {
       return html`
       <div class="p-group">
